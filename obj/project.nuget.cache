@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "VXPr4Hr/5OYKlLBIDaPWX2Ei4x/ZJ8hQ3HQIrTPB/yQ/09FqV5pr8ZsndcTTC5ZLSTdBK+yQ+WdhVB2WFZVVbQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\disrct\\Desktop\\joguin_2\\joguin.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\disrct\\.nuget\\packages\\pamella\\1.7.0\\pamella.1.7.0.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\statelylib\\1.3.0\\statelylib.1.3.0.nupkg.sha512"
+  ],
+  "logs": []
+}
