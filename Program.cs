@@ -29,47 +29,55 @@ public class Player
 
 public abstract class State
 {
-    protected Enemy enemy;
-    // protected Player player;
+    public Enemy enemy;
+
     public abstract void Act();
 
-    public State (Enemy enemy)
-        => this.enemy = enemy;
+    public State NextState { get; set; }
+    
 }
 
 public class MovingState : State
 {
-    public MovingState(Enemy enemy) : base(enemy) { }
-
     public float XTarget { get; set; }
     public float YTarget { get; set; }
 
     public override void Act()
     {
         var dx = XTarget - enemy.X;
-        var dy = XTarget - enemy.Y;
+        var dy = YTarget - enemy.Y;
 
         var mod = MathF.Sqrt(dx * dx + dy * dy);
 
         if (mod < 5)
-            this.enemy.State = new StopState(this.enemy);
+        {
+            this.enemy.State = NextState;
+            return;
+        }
 
-        enemy.X += 50 * dx / mod / 40;
-        enemy.Y += 50 * dy / mod / 40;
+        enemy.X += 200 * dx / mod / 40;
+        enemy.Y += 200 * dy / mod / 40;
     }
 }
 
-public class StopState : State
+public class RotateState : State
 {
-    public StopState(Enemy enemy) : base(enemy) { }
-
-    public float XTarget { get; set; }
-    public float YTarget { get; set; }
+    public float AngleTarget { get; set; }
+    
 
     public override void Act()
     {
-        var dx = XTarget - enemy.X;
-        var dy = XTarget - enemy.Y;
+        var dTheta = AngleTarget - enemy.Angle;
+
+        if (MathF.Abs(dTheta) < 0.05)
+        {
+            this.enemy.State = NextState;
+            return;
+        }
+
+        enemy.Angle += 0.1f * MathF.Sign(dTheta);
+
+        Console.WriteLine(dTheta);
     }
 }
 
@@ -80,21 +88,27 @@ public class Joguin : View
 
     protected override void OnStart(IGraphics g)
     {
-        enemy1 = new Enemy
-        {
-            X = 400,
-            Y = 270,  
-        };
+        enemy1 = new Enemy();
 
-        enemy1.State = new MovingState(enemy1)
-        {
-            XTarget = 600,
-            YTarget = 330,
-        };
+        var builder = new StateBuilder();
 
-        player1 = new Player();
-        player1.X = 900;
-        player1.Y = 400;
+        builder
+            .SetEnemy(enemy1)
+            .AddMovingState(200, 200)
+            .AddRotateState(0)
+            .AddMovingState(1600, 200)
+            .AddRotateState(MathF.PI / 2)
+            .AddMovingState(1600, 1000)
+            .AddRotateState(MathF.PI)
+            .AddMovingState(200, 1000)
+            .AddRotateState(3 * MathF.PI / 2)
+            .Build();
+
+        player1 = new Player
+        {
+            X = 900,
+            Y = 400,
+        };
 
         g.SubscribeKeyDownEvent(key =>
         {
@@ -121,7 +135,7 @@ public class Joguin : View
 
     protected override void OnRender(IGraphics g)
     {
-        enemy1.Angle += 0.01f;
+        // enemy1.Angle += 0.01f;
         g.Clear(Color.DarkGreen);
 
         g.FillRectangle(
