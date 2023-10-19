@@ -1,0 +1,15 @@
+C:\Users\disrct\Desktop\funcx\bin\Debug\net7.0\funcx.exe
+C:\Users\disrct\Desktop\funcx\bin\Debug\net7.0\funcx.deps.json
+C:\Users\disrct\Desktop\funcx\bin\Debug\net7.0\funcx.runtimeconfig.json
+C:\Users\disrct\Desktop\funcx\bin\Debug\net7.0\funcx.dll
+C:\Users\disrct\Desktop\funcx\bin\Debug\net7.0\funcx.pdb
+C:\Users\disrct\Desktop\funcx\obj\Debug\net7.0\funcx.csproj.AssemblyReference.cache
+C:\Users\disrct\Desktop\funcx\obj\Debug\net7.0\funcx.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\disrct\Desktop\funcx\obj\Debug\net7.0\funcx.AssemblyInfoInputs.cache
+C:\Users\disrct\Desktop\funcx\obj\Debug\net7.0\funcx.AssemblyInfo.cs
+C:\Users\disrct\Desktop\funcx\obj\Debug\net7.0\funcx.csproj.CoreCompileInputs.cache
+C:\Users\disrct\Desktop\funcx\obj\Debug\net7.0\funcx.dll
+C:\Users\disrct\Desktop\funcx\obj\Debug\net7.0\refint\funcx.dll
+C:\Users\disrct\Desktop\funcx\obj\Debug\net7.0\funcx.pdb
+C:\Users\disrct\Desktop\funcx\obj\Debug\net7.0\funcx.genruntimeconfig.cache
+C:\Users\disrct\Desktop\funcx\obj\Debug\net7.0\ref\funcx.dll
